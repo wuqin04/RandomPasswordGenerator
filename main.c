@@ -1,28 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-long int rand(void);
-
-void srand(unsigned int seed);
-
-int getRandomInt();
+char getRandomChar();
 
 int main() {
-    int length = 0;
+    int len = 0;
+    char* password = "empty";
     printf("Enter the length of your password: ");
-    scanf("%d", &length);
-    char password[length];
+    scanf("%d", &len);
 
-    for (int i = 0; i < length; i++) {
-        password[i] = getRandomInt();
-    }
+    printf("Your random character is: %s\n", password);
 }
 
-int getRandomInt() {
+char getRandomChar() {
     srand(((unsigned int)time(NULL)));
     const int max = 122;
     const int min = 92;
-    int random = (rand() % (max - min + 1)) + min;
-    return random;
+    long int random = (rand() % (max - min + 1)) + min;
+    return (char)random;
 }
-
